@@ -1,56 +1,66 @@
-# Do “End of the World” Searches Rise Around Major News Events?
+# Campaign Fundraising and Spending in 2026 Senate Races
 
 ## Research question
 
-Do Google searches in the United States for “end of the world” rise around major news events?
+How did reported campaign fundraising and spending compare among 2026 U.S. Senate candidates in Iowa, Michigan, Ohio and Texas?
 
 ## Project overview
 
-This project uses Google Trends to examine monthly search interest around four events:
+This project uses Federal Election Commission (FEC) data to compare campaign receipts and disbursements for Senate candidates in four selected states.
 
-- The World Health Organization’s COVID-19 pandemic announcement on March 11, 2020
-- Russia’s full-scale invasion of Ukraine on February 24, 2022
-- The October 7, 2023 attack on Israel
-- The 2024 U.S. presidential election on November 5, 2024
+The dataset includes candidates with FEC financial records for the 2026 election cycle. It includes primary candidates as well as general-election candidates, so it does not represent only the final November candidates in each state.
 
-The project looks for changes in search interest around these events. It can show that search interest and events happened around the same time, but it cannot show that an event caused people to search.
+Ohio's 2026 Senate race was a special election to fill a vacant seat. The other states in this project held regularly scheduled Senate elections.
 
 ## Data
 
-- **Source:** [Google Trends Explore](https://trends.google.com/trends/explore)
-- **Search term:** “end of the world”
-- **Location:** United States
-- **Category:** All categories
-- **Time period:** January 2020–November 2026
-- **Frequency:** Monthly
-- **Records:** 83 monthly observations
-- **Collected:** October 25, 2026
+- **Source:** [FEC OpenFEC API](https://api.open.fec.gov/developers/)
+- **Endpoint:** `/v1/candidates/totals/`
+- **Election cycle:** 2026
+- **Office:** U.S. Senate
+- **States:** Iowa, Michigan, Ohio and Texas
+- **Collected:** November 8, 2026
+- **Records after cleaning:** 94
+  - Iowa: 12
+  - Michigan: 25
+  - Ohio: 16
+  - Texas: 41
+- **Sample in the repository:** `data/sample_clean.csv`, with three records per state
 
-The November 2026 value is partial because the data was collected during that month.
-
-Google Trends scores are normalized values from 0 to 100. They show relative search interest for the selected location and time period, not the number of searches.
+The FEC's `receipts` field reports money received by a campaign. `disbursements` reports campaign spending. These figures describe candidate campaigns and do not include all spending by outside groups, such as independent expenditures by Super PACs.
 
 ## Collection and cleaning
 
-I downloaded the chart data as a CSV from Google Trends Explore. The exported file has a month field and a search-interest score. The cleaning notebook will convert the month to a date, convert scores to numbers, check for missing values, and save a small cleaned sample for this repository.
+The notebook collects candidate financial totals from the FEC API for the 2026 Senate cycle in the four selected states. Requests use a descriptive User-Agent and pause between pages.
 
-The full downloaded CSV will stay local. This repository will contain the collection and cleaning code plus a small sample of the cleaned data.
+The raw API response and full cleaned dataset are saved locally. The repository contains the notebook and a 12-row sample of the cleaned data. The full raw response is excluded because it includes unnecessary fields, including candidate address information.
 
 ## Analysis plan
 
-For the Ukraine invasion, the October 2023 attack, and the 2024 election, I will compare search interest during the event month and following month with the three months before the event.
+I will compare reported receipts and disbursements by state and party, identify candidates with the highest reported totals, and compare receipts with disbursements.
 
-For COVID19, I will compare March and April 2020 with January and February 2020. The data begins in January 2020, so this comparison has only two months before the event.
-
-Because the data is monthly, it cannot isolate the exact day of a search. Event/month scores may include searches from both before and after the event.
+These figures represent the reports available when the data was collected. They may not reflect each candidate's final election-cycle totals, and different candidates' reports may cover different time periods.
 
 ## Data dictionary
 
 | Field | Meaning |
 |---|---|
-| `month` | Month represented by the observation |
-| `interest_score` | Google Trends relative search interest score from 0 to 100 |
+| `candidate_id` | FEC identifier for the candidate |
+| `candidate_name` | Candidate name as listed by the FEC |
+| `party_code` | FEC party abbreviation |
+| `party_name` | Full party name reported by the FEC |
+| `state` | State abbreviation for the Senate race |
+| `office` | Federal office code; `S` means Senate |
+| `receipts` | Total campaign receipts reported for the 2026 cycle |
+| `disbursements` | Total campaign spending reported for the 2026 cycle |
+| `cash_on_hand` | Campaign cash on hand at the end of the reported period |
+| `debts_owed` | Debt reported as owed by the campaign committee |
+| `coverage_start_date` | Start date of the financial reporting period |
+| `coverage_end_date` | End date of the financial reporting period |
+| `last_filing_date` | Date of the latest FEC filing shown |
 
 ## Limitations
 
-Google Trends uses aggregated and sampled search data. A higher score indicates greater relative interest, not a number of searches or a count of people. This analysis describes timing and association. It cannot establish why people searched or prove that a news event caused a change.
+FEC candidate totals cover candidates who registered and filed financial reports; they may not include every person who appeared on a ballot. The FEC notes that its tables may not immediately reflect the newest filings.
+
+This project measures candidate campaign receipts and disbursements, not total election spending by all campaigns, parties and outside groups. Ohio's race was a special election, so its circumstances differ from the regularly scheduled Senate races in Iowa, Michigan and Texas.
