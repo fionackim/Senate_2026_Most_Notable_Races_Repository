@@ -25,7 +25,7 @@ Ohio's 2026 Senate race was a special election to fill a vacant seat. The other 
   - Michigan: 25
   - Ohio: 16
   - Texas: 41
-- **Sample in the repository:** `data/sample_clean.csv`, with three records per state
+- **Sample in the repository:** `data/sample/sample_clean.csv`, with three records per state
 
 The FEC's `receipts` field reports money received by a campaign. `disbursements` reports campaign spending. These figures describe candidate campaigns and do not include all spending by outside groups, such as independent expenditures by Super PACs.
 
