@@ -6,9 +6,10 @@ How did reported campaign fundraising and spending compare among 2026 U.S. Senat
 
 ## Project overview
 
-This project uses Federal Election Commission (FEC) data to compare campaign receipts and disbursements for Senate candidates in four selected states.
+This project uses Federal Election Commission (FEC) data to compare campaign receipts and disbursements for Senate candidates in four selected states. These 
+States particularly stick out in the 2026 Midterm Elections with historic results.
 
-The dataset includes candidates with FEC financial records for the 2026 election cycle. It includes primary candidates as well as general-election candidates, so it does not represent only the final November candidates in each state.
+The dataset includes candidates with FEC financial records for the 2026 election cycle. It includes primary candidates as well as general election candidates, so it does not represent only the final November candidates in each state.
 
 Ohio's 2026 Senate race was a special election to fill a vacant seat. The other states in this project held regularly scheduled Senate elections.
 
@@ -33,13 +34,13 @@ The FEC's `receipts` field reports money received by a campaign. `disbursements`
 
 The notebook collects candidate financial totals from the FEC API for the 2026 Senate cycle in the four selected states. Requests use a descriptive User-Agent and pause between pages.
 
-The raw API response and full cleaned dataset are saved locally. The repository contains the notebook and a 12-row sample of the cleaned data. The full raw response is excluded because it includes unnecessary fields, including candidate address information.
+The raw API response and full cleaned dataset are saved locally. The repository contains the notebook and a 12 row sample of the cleaned data. The full raw response is excluded because it includes unnecessary fields, including candidate address information.
 
 ## Analysis plan
 
-I will compare reported receipts and disbursements by state and party, identify candidates with the highest reported totals, and compare receipts with disbursements.
+I will compare reported receipts and disbursements by state and party, identify candidates with the highest reported totals, and compare receipts with disbursements, as well as election results.
 
-These figures represent the reports available when the data was collected. They may not reflect each candidate's final election-cycle totals, and different candidates' reports may cover different time periods.
+These figures represent the reports available when the data was collected. They may not reflect each candidate's final election cycle totals, and different candidates' reports may cover different time periods since this is an ongoing election that has not been fully been counted at the time of collection.
 
 ## Data dictionary
 
@@ -61,6 +62,4 @@ These figures represent the reports available when the data was collected. They 
 
 ## Limitations
 
-FEC candidate totals cover candidates who registered and filed financial reports; they may not include every person who appeared on a ballot. The FEC notes that its tables may not immediately reflect the newest filings.
-
-This project measures candidate campaign receipts and disbursements, not total election spending by all campaigns, parties and outside groups. Ohio's race was a special election, so its circumstances differ from the regularly scheduled Senate races in Iowa, Michigan and Texas.
+FEC candidate totals cover candidates who registered and filed financial reports; they may not include every person who appeared on a ballot. The FEC notes that its tables may not immediately reflect the newest filings. This project measures candidate campaign receipts and disbursements, not total election spending by all campaigns, parties and outside groups. Ohio's race was a special election because of JD Vance becoming Vice President, so its circumstances differ from the regularly scheduled Senate races in Iowa, Michigan and Texas.
