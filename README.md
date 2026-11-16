@@ -42,6 +42,17 @@ I will compare reported receipts and disbursements by state and party, identify 
 
 These figures represent the reports available when the data was collected. They may not reflect each candidate's final election cycle totals, and different candidates' reports may cover different time periods since this is an ongoing election that has not been fully been counted at the time of collection.
 
+## Methods
+
+I used FEC candidate financial totals for 94 Senate candidate records from Iowa, Michigan, Ohio, and Texas, collected November 8, 2026. I compared receipts and disbursements by state, including a separate comparison for records with positive reported totals. I also identified the top-spending Democratic and Republican candidate in each state and compared their campaign and outside support and opposition totals.
+
+## Preliminary Findings
+
+Among records with positive reported totals, Iowa had the highest median receipts ($963,981.89) and spending ($961,344.34). Texas had the lowest median receipts ($12,961.43) and spending ($12,301.19), while Michigan and Ohio fell between them. These are preliminary comparisons of reported records; candidates’ reporting periods can differ, and the dataset includes both primary and general election candidates.
+
+![Campaign and outside money by candidate](campaign_outside_comparison.png)
+
+*This figure compares reported campaign receipts and spending with outside support and opposition for the top Democratic and Republican spenders in each state.*
 ## Data dictionary
 
 | Field | Meaning |
