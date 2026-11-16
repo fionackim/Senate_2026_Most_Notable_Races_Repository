@@ -1,3 +1,4 @@
 data/raw/
-data/processed/
+data/processed/*
+!data/processed/fec_2026_senate_clean.csv
 .ipynb_checkpoints/
